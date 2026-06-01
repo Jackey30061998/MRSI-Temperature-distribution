@@ -17,11 +17,11 @@ Temperature estimation is based on the **Proton Resonance Frequency (PRF) shift*
 
 * Reconstruction of raw Siemens TWIX MRSI data
 * Sorting of acquisition data into multidimensional k-space
-* Odd-even echo correction
+* Odd-even echo correction, phase correction
 * Coil combination using water reference data
 * Spectral reconstruction and processing
-* Simulation of custom RF pulses and sequence behavior
-* Generation of LCModel-compatible datasets
+* Simulation of custom RF pulses and sequence behavior of SLOW pulse sequence developed by Dr. Weng (DOI: 10.1002/mrm.29220)
+* Generation of LCModel-compatible basis datasets using FID-A toolkit (https://github.com/CIC-methods/FID-A/tree/master/simulationTools) - a simulation was adapted from the MEGA simulation which was already found in the toolkit, the runskript was also adapted accordingly
 * Brain temperature estimation from spectroscopic data
 * Visualization of cerebral temperature distributions
 
@@ -30,13 +30,14 @@ Temperature estimation is based on the **Proton Resonance Frequency (PRF) shift*
 ## Data Acquisition
 
 The MRSI datasets were acquired at the **7 Tesla MRI facility of the Otto von Guericke University Magdeburg (OVGU), Germany**.
+The adaptation of the new SLOW-EPSI pulse sequences was done by Prof. Mattern with help of the original developer Dr. Weng and the MTR assistants in the Research group in Magdeburg. For further information please contact these people.
 
 Example datasets include:
 
 * High-resolution SLOW-EPSI acquisitions
 * Low-resolution SLOW-EPSI acquisitions
 * Phantom measurements
-* External Siemens Prisma datasets for comparison
+* External Siemens Prisma datasets for comparison (from University in Bern, by Dr. Weng)
 
 ---
 
@@ -49,13 +50,15 @@ Main reconstruction and processing pipeline.
 ### Features
 
 * Import Siemens TWIX raw data using `mapVBVD_Gannet`
-* Sort raw acquisitions into multidimensional k-space
+* Sort raw acquisitions into multidimensional k-space `partially by Dr.Weng` 
 * Handle repeated acquisitions
 * Correct odd-even echo inconsistencies
-* Perform spectral and spatial Fourier transforms
+* Perform spectral and spatial Fourier transforms `with help of Dr. Weng and Prof. Mattern`
 * Generate metabolite and water images
 * Save intermediate reconstruction results
+* LCModel fitting using simulated Basisspektra `FID-A Master`
 * Prepare data for spectral fitting and temperature calculation
+  
 
 ### Input
 
